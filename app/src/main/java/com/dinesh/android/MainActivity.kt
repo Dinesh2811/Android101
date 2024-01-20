@@ -11,6 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.dinesh.android.ui.theme.Android101Theme
+import com.dinesh.theme.Main
 
 class MainActivity: ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,6 +24,9 @@ class MainActivity: ComponentActivity() {
                 }
             }
         }
+
+        Main().testing()
+
     }
 }
 

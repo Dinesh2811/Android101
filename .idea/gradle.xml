@@ -10,6 +10,8 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/lib" />
+            <option value="$PROJECT_DIR$/lib/theme" />
             <option value="$PROJECT_DIR$/old" />
             <option value="$PROJECT_DIR$/old/basic" />
             <option value="$PROJECT_DIR$/old/compose" />
