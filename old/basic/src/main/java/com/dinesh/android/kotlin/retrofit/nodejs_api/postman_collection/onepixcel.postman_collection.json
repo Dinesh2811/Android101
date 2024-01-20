@@ -1,0 +1,117 @@
+{
+	"info": {
+		"_postman_id": "a3f04115-adb6-4c74-9946-c6c44683c9a5",
+		"name": "onepixcel",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27788171"
+	},
+	"item": [
+		{
+			"name": "Create Orders",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "81|rvf3ZWny9w88tXYAOWCwXh6VBNbTO5ZBHroSbW30",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "customer_id",
+							"value": "38",
+							"type": "text"
+						},
+						{
+							"key": "order_details[0][name]",
+							"value": "testing",
+							"type": "text"
+						},
+						{
+							"key": "order_details[0][specification]",
+							"value": "testing",
+							"type": "text"
+						},
+						{
+							"key": "order_details[0][price]",
+							"value": "150",
+							"type": "text"
+						},
+						{
+							"key": "order_details[0][image]",
+							"type": "file",
+							"src": "/Users/gulshan/Downloads/home.png"
+						},
+						{
+							"key": "order_details[1][name]",
+							"value": "testing1",
+							"type": "text"
+						},
+						{
+							"key": "order_details[1][specification]",
+							"value": "testing1",
+							"type": "text"
+						},
+						{
+							"key": "order_details[1][price]",
+							"value": "250",
+							"type": "text"
+						},
+						{
+							"key": "order_details[1][image]",
+							"type": "file",
+							"src": "/Users/gulshan/Downloads/peakpx.jpg"
+						},
+						{
+							"key": "order_details[0][quantity]",
+							"value": "12",
+							"type": "text"
+						},
+						{
+							"key": "order_details[1][quantity]",
+							"value": "15",
+							"type": "text"
+						},
+						{
+							"key": "order_details[0][imageurl]",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "order_details[1][imageurl]",
+							"value": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://chennainextlevel.com/api/v1/orders",
+					"protocol": "https",
+					"host": [
+						"chennainextlevel",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"orders"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

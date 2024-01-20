@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/action_search"
+          android:title="Search"
+          android:visible="false"
+          android:icon="@drawable/baseline_search_24"
+          app:iconTint="?attr/colorOnSurface"
+          app:showAsAction="ifRoom|collapseActionView"
+          app:actionViewClass="androidx.appcompat.widget.SearchView" />
+
+    <item
+        android:id="@+id/action_select_theme"
+        android:title="Select theme" />
+
+    <group
+        android:id="@+id/action_select_language"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/action_kotlin"
+            android:title="Kotlin" />
+        <item
+            android:id="@+id/action_java"
+            android:title="Java"/>
+    </group>
+
+    <item
+        android:id="@+id/action_testing"
+        android:title="Testing"
+        android:checkable="true"
+        android:checked="false" />
+
+</menu>
+
+<!--
+
+    <item
+        android:id="@+id/action_switch"
+        android:title="Switch"
+        app:actionViewClass="androidx.appcompat.widget.SwitchCompat"
+        app:showAsAction="never"
+        android:checkable="true"
+        android:checked="true"/>
+-->

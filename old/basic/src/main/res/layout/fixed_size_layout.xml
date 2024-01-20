@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/viewA"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#40F44336"
+        android:text="@string/text_data"
+        app:autoSizeTextType="uniform"
+        app:autoSizeMinTextSize="1sp"
+        app:autoSizeMaxTextSize="35sp"
+        app:autoSizeStepGranularity="1sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.15"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/view1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="#03A9F4"
+        app:layout_constraintHeight_percent="0.05"
+        app:layout_constraintTop_toBottomOf="@+id/viewA"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <TextView
+        android:id="@+id/viewB"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="@string/text_data"
+        android:background="#40F44336"
+        app:autoSizeTextType="uniform"
+        app:autoSizeMinTextSize="1sp"
+        app:autoSizeMaxTextSize="35sp"
+        app:autoSizeStepGranularity="1sp"
+        app:layout_constraintEnd_toEndOf="@id/viewA"
+        app:layout_constraintHeight_percent="0.15"
+        app:layout_constraintStart_toStartOf="@id/viewA"
+        app:layout_constraintTop_toBottomOf="@+id/view1" />
+
+    <View
+        android:id="@+id/view2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="#03A9F4"
+        app:layout_constraintHeight_percent="0.05"
+        app:layout_constraintTop_toBottomOf="@+id/viewB"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <TextView
+        android:id="@+id/viewC"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#40F44336"
+        android:text="@string/text_data"
+        app:autoSizeTextType="uniform"
+        app:autoSizeMinTextSize="1sp"
+        app:autoSizeMaxTextSize="35sp"
+        app:autoSizeStepGranularity="1sp"
+        app:layout_constraintEnd_toEndOf="@id/viewB"
+        app:layout_constraintHeight_percent="0.15"
+        app:layout_constraintStart_toStartOf="@id/viewB"
+        app:layout_constraintTop_toBottomOf="@+id/view2" />
+
+    <View
+        android:id="@+id/view3"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="#03A9F4"
+        app:layout_constraintHeight_percent="0.05"
+        app:layout_constraintTop_toBottomOf="@+id/viewC"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <TextView
+        android:id="@+id/viewD"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="@string/text_data"
+        android:background="#40F44336"
+        app:autoSizeTextType="uniform"
+        app:autoSizeMinTextSize="1sp"
+        app:autoSizeMaxTextSize="35sp"
+        app:autoSizeStepGranularity="1sp"
+        app:layout_constraintEnd_toEndOf="@id/viewC"
+        app:layout_constraintHeight_percent="0.15"
+        app:layout_constraintStart_toStartOf="@id/viewC"
+        app:layout_constraintTop_toBottomOf="@+id/view3" />
+
+    <View
+        android:id="@+id/view4"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="#03A9F4"
+        app:layout_constraintHeight_percent="0.05"
+        app:layout_constraintTop_toBottomOf="@+id/viewD"
+        tools:layout_editor_absoluteX="16dp" />
+
+    <TextView
+        android:id="@+id/viewE"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#40F44336"
+        android:text="@string/text_data"
+        app:autoSizeTextType="uniform"
+        app:autoSizeMinTextSize="1sp"
+        app:autoSizeMaxTextSize="35sp"
+        app:autoSizeStepGranularity="1sp"
+        app:layout_constraintEnd_toEndOf="@id/viewD"
+        app:layout_constraintHeight_percent="0.15"
+        app:layout_constraintStart_toStartOf="@id/viewD"
+        app:layout_constraintTop_toBottomOf="@+id/view4" />
+
+    <View
+        android:id="@+id/view5"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="#03A9F4"
+        app:layout_constraintHeight_percent="0.05"
+        app:layout_constraintTop_toBottomOf="@+id/viewE"
+        tools:layout_editor_absoluteX="16dp" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

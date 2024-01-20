@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardView"
+            style="@style/styleCardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="clickListener">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:divider="@drawable/divider"
+                android:dividerPadding="1dp"
+                android:orientation="vertical"
+                android:padding="30dp"
+                android:showDividers="middle">
+
+
+                <com.google.android.material.textview.MaterialTextView
+                    style="@style/styleTextView"
+                    android:text="TextView" />
+
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/backButton"
+                    style="@style/styleButton"
+                    android:text="Back Button" />
+
+
+                <EditText
+                    style="@style/styleEditText"
+                    android:maxLines="1" />
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/styleTextInputLayout"
+                    android:hint="Please enter this field">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        style="@style/styleTextInputEditText"
+                        android:maxLength="50" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/imageView"
+                    style="@style/styleImageView"
+                    android:src="@drawable/ic_launcher_foreground"
+                    android:onClick="clickListener"/>
+
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Select Item"
+                    android:padding="8dp"
+                    android:layout_margin="8dp">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/filled_exposed"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <CalendarView
+                    android:id="@+id/calendarView"
+                    android:layout_width="250dp"
+                    android:layout_height="250dp"
+                    android:layout_gravity="center"
+                    android:layout_centerInParent="true"
+                    android:dateTextAppearance="@style/DefaultDateTextAppearance"
+                    android:showWeekNumber="false" />
+
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </ScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

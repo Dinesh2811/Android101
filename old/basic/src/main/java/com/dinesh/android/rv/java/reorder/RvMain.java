@@ -1,0 +1,85 @@
+package com.dinesh.android.rv.java.reorder;
+
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.ItemTouchHelper;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.dinesh.android.R;
+import com.dinesh.android.app.ToolbarMain;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+public class RvMain extends ToolbarMain implements RvInterface {
+    private final String TAG = "log_" + RvMain.class.getName().split(RvMain.class.getName().split("\\.")[2] + ".")[1];
+
+    List<RvModel> rvModelList = new ArrayList<>();
+    RvAdapter rvAdapter;
+    RecyclerView recyclerView;
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentViewLayout(R.layout.rv_basic_main);
+        recyclerView = findViewById(R.id.recyclerView);
+
+        //Sample Model Data
+        for (int i = 0; i < 50; i++) {
+            rvModelList.add(new RvModel(R.drawable.ic_launcher_foreground, "User " + (i + 1), false));
+        }
+
+        recyclerView.setHasFixedSize(true);
+        rvAdapter = new RvAdapter(rvModelList, RvMain.this);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+        recyclerView.setAdapter(rvAdapter);
+        recyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
+
+
+        //  Drag and Re-Order RecyclerView
+        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleCallback);
+        itemTouchHelper.attachToRecyclerView(recyclerView);
+
+    }
+
+    @Override
+    public void onItemClick(View view, int position) {
+        Log.e(TAG, "onItemClick: position -> " + position);
+//        Intent intent = new android.content.Intent(this, NewLayout.class);
+//        intent.putExtra("NAME", rvModelList.get(position).name);
+//        startActivity(intent);
+
+        /* ---- NewLayout.class ----
+//        String movieName = getIntent().getStringExtra("NAME");
+         */
+
+    }
+
+    ItemTouchHelper.SimpleCallback simpleCallback = new ItemTouchHelper.SimpleCallback(ItemTouchHelper.UP |
+            ItemTouchHelper.DOWN | ItemTouchHelper.START | ItemTouchHelper.END, 0) {
+        @Override
+        public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+
+            int fromPosition = viewHolder.getBindingAdapterPosition();
+            int toPosition = target.getBindingAdapterPosition();
+            Log.d(TAG, "onMove: fromPosition -> " + fromPosition);
+            Log.e(TAG, "onMove: toPosition -> " + toPosition);
+            Collections.swap(rvModelList, fromPosition, toPosition);
+            recyclerView.getAdapter().notifyItemMoved(fromPosition, toPosition);
+            return false;
+        }
+
+        @Override
+        public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+            Log.d(TAG, "onSwiped: " );
+        }
+    };
+}
