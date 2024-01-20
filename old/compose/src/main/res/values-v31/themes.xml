@@ -157,8 +157,7 @@
     </style>
 
 
-    <!--    <style name="Theme.Light" parent="Theme.Material3.Light.NoActionBar">-->
-    <style name="Theme.Light" parent="Theme.MaterialComponents.Light.NoActionBar">
+    <style name="Theme.Light" parent="Theme.Material3.Light.NoActionBar">
         <item name="colorPrimary">@color/Primary40</item>
         <item name="colorOnPrimary">@color/white</item>
         <item name="colorPrimaryContainer">@color/Primary90</item>
@@ -197,8 +196,7 @@
     </style>
 
 
-<!--        <style name="Theme.Dark" parent="Theme.Material3.Dark.NoActionBar">-->
-    <style name="Theme.Dark" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="Theme.Dark" parent="Theme.Material3.Dark.NoActionBar">
         <item name="colorPrimary">@color/Primary80</item>
         <item name="colorOnPrimary">@color/Primary20</item>
         <item name="colorPrimaryContainer">@color/Primary30</item>
@@ -237,8 +235,7 @@
     </style>
 
 
-    <!--    <style name="Theme.PureBlack" parent="Theme.Material3.Dark.NoActionBar">-->
-    <style name="Theme.PureBlack" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="Theme.PureBlack" parent="Theme.Material3.Dark.NoActionBar">
         <item name="colorPrimary">@color/Primary90</item>
         <item name="colorOnPrimary">@color/Primary10</item>
         <item name="colorPrimaryContainer">@color/Primary20</item>
@@ -277,8 +274,7 @@
     </style>
 
 
-    <!--    <style name="Theme.PureBlack.V2" parent="Theme.Material3.Dark.NoActionBar">-->
-    <style name="Theme.PureBlack.V2" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="Theme.PureBlack.V2" parent="Theme.Material3.Dark.NoActionBar">
         <item name="colorPrimary">@color/Primary100</item>
         <item name="colorOnPrimary">@color/Primary0</item>
         <item name="colorPrimaryContainer">@color/Primary10</item>
