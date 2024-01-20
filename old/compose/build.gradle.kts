@@ -12,7 +12,7 @@ plugins {
 }
 
 android {
-    namespace = "com.dinesh.android.old.compose"
+    namespace = "com.dinesh.android"
     compileSdk = rootProject.extra["compileSdk"] as Int
 //    compileSdkPreview = "UpsideDownCake"
 
@@ -32,7 +32,7 @@ android {
     }
 
     defaultConfig {
-        namespace = "com.dinesh.android.old.compose"
+        applicationId = "com.dinesh.android"
         minSdk = 26
         targetSdk = rootProject.extra["targetSdk"] as Int
         versionCode = 1

@@ -16,7 +16,6 @@ dependencyResolutionManagement {
 
 rootProject.name = "Android101"
 include(":app")
-//include(":old")
+include(":old:temp")
 include(":old:basic")
 include(":old:compose")
-include(":old:temp")
