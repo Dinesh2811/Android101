@@ -20,5 +20,8 @@ include(":app")
 include(":old:temp")
 include(":old:basic")
 include(":old:compose")
+include(":old:di:app")
+include(":old:di:dagger")
+include(":old:di:hilt")
 
 include(":lib:theme")
