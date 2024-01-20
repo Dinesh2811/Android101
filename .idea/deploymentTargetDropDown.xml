@@ -11,6 +11,9 @@
       <entry key="old.compose">
         <State />
       </entry>
+      <entry key="old.temp">
+        <State />
+      </entry>
     </value>
   </component>
 </project>
