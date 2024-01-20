@@ -1,0 +1,77 @@
+# create .graphql file within GraphQL Android Studio Plugin.
+query FetchData {
+    hello
+    numbers
+}
+
+query FetchGreeting {
+    hello
+}
+
+query FetchNumbers {
+    numbers
+}
+
+query FetchPersons {
+    persons {
+        name
+        age
+        address {
+            country
+            city
+            street
+        }
+    }
+}
+
+query FetchPerson($name: String!) {
+    person(name: $name){
+        name
+        age
+        address {
+            street
+            city
+            country
+        }
+    }
+}
+
+query SearchPersonsByNameAge($name: String!, $age: Int!) {
+    searchPersons(name: $name, age: $age){
+        name
+        age
+    }
+}
+
+query SearchPersonsByName($name: String!) {
+    searchPersons(name: $name){
+        name
+        age
+    }
+}
+
+query SearchPersonsByAge($age: Int!) {
+    searchPersons(age: $age){
+        name
+        age
+    }
+}
+
+mutation AddPerson($name: String!, $age: Int!, $street: String!, $city: String!, $country: String!) {
+    addPerson(name: $name, age: $age, street: $street, city: $city, country: $country) {
+        name
+        age
+        address {
+            street
+            city
+            country
+        }
+    }
+}
+
+mutation DeletePersonsByName($name: [String!]!) {
+    deletePerson(names: $name) {
+        name
+        age
+    }
+}

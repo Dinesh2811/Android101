@@ -1,0 +1,9 @@
+# create .graphql file within GraphQL Android Studio Plugin.
+query GetCountries {
+    countries {
+        name
+        capital
+        code
+        emoji
+    }
+}

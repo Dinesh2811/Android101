@@ -1,0 +1,4 @@
+# create .graphql file within GraphQL Android Studio Plugin.
+query Data {
+    hello
+}

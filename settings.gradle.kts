@@ -25,3 +25,4 @@ include(":old:di:dagger")
 include(":old:di:hilt")
 
 include(":lib:theme")
+include(":old:graphql")
