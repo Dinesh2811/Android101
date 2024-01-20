@@ -15,6 +15,10 @@
             <option value="$PROJECT_DIR$/old" />
             <option value="$PROJECT_DIR$/old/basic" />
             <option value="$PROJECT_DIR$/old/compose" />
+            <option value="$PROJECT_DIR$/old/di" />
+            <option value="$PROJECT_DIR$/old/di/app" />
+            <option value="$PROJECT_DIR$/old/di/dagger" />
+            <option value="$PROJECT_DIR$/old/di/hilt" />
             <option value="$PROJECT_DIR$/old/temp" />
           </set>
         </option>
