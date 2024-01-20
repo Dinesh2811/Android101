@@ -5,10 +5,10 @@
       <entry key="app">
         <State />
       </entry>
-      <entry key="old">
+      <entry key="old.basic">
         <State />
       </entry>
-      <entry key="old.basic">
+      <entry key="old.compose">
         <State />
       </entry>
     </value>
