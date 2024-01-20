@@ -1,0 +1,84 @@
+name: Multi Module Build Generate
+
+on:
+  workflow_dispatch:
+#  push:
+#    branches: [ "*" ]
+#  pull_request:
+#    branches: [ "master" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    continue-on-error: true
+
+    strategy:
+      matrix:
+        api-level: [34]
+        gradle-version: [8.5]
+        flavour: [freeVersion, paidVersion]
+        module: [Playground]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          check-latest: true
+
+      - name: set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: gradle
+
+      - name: Cache Gradle dependencies
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+            ~/.android/build-cache
+            app/build
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-${{ matrix.gradle-version }}-
+
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+
+      - name: Build with Gradle
+        run: ./gradlew build
+        continue-on-error: true
+
+      - name: Build and sign release APK
+        run: ./gradlew assembleRelease --stacktrace
+        continue-on-error: true
+
+      - name: Upload APK artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: release-apk
+          # Upload the APK files as an artifact
+          path: |
+            app/build/outputs/apk/freeVersion/release/*.apk
+            app/build/outputs/apk/paidVersion/release/*.apk
+            Playground/build/outputs/apk/release/*.apk
+        continue-on-error: true
+
+      - name: Output details on failure
+        if: failure()
+        run: cat build/reports/*.html
+        continue-on-error: true
+
+      - name: Upload error logs
+        if: failure()
+        uses: actions/upload-artifact@v3
+        with:
+          name: error-logs
+          path: |
+            build/*.log
+            app/build/reports
