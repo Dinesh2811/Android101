@@ -26,3 +26,5 @@ include(":old:di:hilt")
 
 include(":lib:theme")
 include(":old:graphql")
+include(":lib:compose")
+include(":lib:xml")

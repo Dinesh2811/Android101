@@ -12,7 +12,7 @@ plugins {
 }
 
 android {
-    namespace = "com.dinesh.theme"
+    namespace = "com.dinesh.compose"
     compileSdk = rootProject.extra["compileSdk"] as Int
 
     defaultConfig {
@@ -45,6 +45,8 @@ android {
 }
 
 dependencies {
+    implementation(project(mapOf("path" to ":lib:theme")))
+    implementation(project(mapOf("path" to ":lib:xml")))
     implementation(libs.bundles.android)
     implementation(libs.bundles.compose)
     implementation(platform(libs.androidx.compose.bom))
