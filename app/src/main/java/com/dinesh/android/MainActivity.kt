@@ -10,12 +10,10 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.dinesh.android.clean_code.sharedPreferences
 import com.dinesh.android.ui.theme.Android101Theme
 import com.dinesh.theme.Main
 
 class MainActivity: ComponentActivity() {
-    private var theme by sharedPreferences(name = "Theme", defaultValue = "")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
