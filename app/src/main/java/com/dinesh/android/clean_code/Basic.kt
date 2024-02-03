@@ -1,6 +1,11 @@
 package com.dinesh.android.clean_code
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
+import kotlin.properties.ReadWriteProperty
+import kotlin.reflect.KProperty
 
 private const val TAG = "log_clean_code_Basic"
 
@@ -67,3 +72,9 @@ fun deStructuring() {
     val (name,  age) = Pair("Dinesh", 25)
     Log.i(TAG, "Name: $name   Age: $age")
 }
+
+
+
+
+
+

@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.dinesh.android.databinding.MainBinding
-import com.dinesh.basic.DatePickerHelper.showDatePicker
+import com.dinesh.basic.view.DatePickerHelper.showDatePicker
 
 private val TAG = "log_" + Main::class.java.name.split(Main::class.java.name.split(".").toTypedArray()[2] + ".").toTypedArray()[1]
 

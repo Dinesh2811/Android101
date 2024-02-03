@@ -1,4 +1,4 @@
-package com.dinesh.basic
+package com.dinesh.basic.view
 
 import android.app.DatePickerDialog
 import android.content.Context
