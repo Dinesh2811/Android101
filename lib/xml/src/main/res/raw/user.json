@@ -1,0 +1,28 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "name": "John Doe",
+      "email": "john.doe@example.com",
+      "phone": "+1 (123) 456-7890",
+      "address": {
+        "street": "123 Main St",
+        "city": "Anytown",
+        "state": "CA",
+        "zip": "12345"
+      }
+    },
+    {
+      "id": 2,
+      "name": "Jane Smith",
+      "email": "jane.smith@example.com",
+      "phone": "+1 (234) 567-8901",
+      "address": {
+        "street": "456 Elm St",
+        "city": "Anycity",
+        "state": "NY",
+        "zip": "67890"
+      }
+    }
+  ]
+}

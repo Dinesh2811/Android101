@@ -128,6 +128,7 @@ android {
 }
 
 dependencies {
+    implementation(project(mapOf("path" to ":lib:basic")))
     implementation(project(mapOf("path" to ":lib:compose")))
     implementation(project(mapOf("path" to ":lib:xml")))
     implementation(project(mapOf("path" to ":lib:theme")))

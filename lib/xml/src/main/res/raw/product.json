@@ -1,0 +1,226 @@
+{
+  "total_count": 2,
+  "data": [
+    {
+      "category": [
+        {
+          "category_name": "Clothing",
+          "sub_categories": [
+            {
+              "sub_categories_name": "Men's Clothing",
+              "products": [
+                {
+                  "id": "MC01",
+                  "name": "Men's Slim Fit Shirt",
+                  "description": "A stylish and comfortable shirt that will elevate any outfit.",
+                  "stock": 50,
+                  "size": [
+                    "S",
+                    "M",
+                    "L",
+                    "XL",
+                    "XXL"
+                  ],
+                  "colors": [
+                    "White",
+                    "Blue",
+                    "Black"
+                  ],
+                  "display_thumbnail": "https://example.com/images/ms01-black.jpg",
+                  "price": 2999,
+                  "currency": "USD",
+                  "pictures": [
+                    "https://example.com/images/ms01-black-front.jpg",
+                    "https://example.com/images/ms01-black-back.jpg"
+                  ]
+                },
+                {
+                  "id": "MC02",
+                  "name": "Men's Slim Fit Jean",
+                  "description": "A stylish and comfortable Jean.",
+                  "stock": 100,
+                  "size": [
+                    "S",
+                    "M",
+                    "L",
+                    "XL",
+                    "XXL"
+                  ],
+                  "colors": [
+                    "White",
+                    "Blue",
+                    "Black"
+                  ],
+                  "display_thumbnail": "https://example.com/images/ms02-gray.jpg",
+                  "price": 2799,
+                  "currency": "USD",
+                  "pictures": [
+                    "https://example.com/images/ms02-gray-front.jpg",
+                    "https://example.com/images/ms02-gray-back.jpg"
+                  ]
+                }
+              ]
+            },
+            {
+              "sub_categories_name": "Women's Clothing",
+              "products": [
+                {
+                  "id": "WC01",
+                  "name": "Women's Summer Dress",
+                  "description": "A light and airy dress perfect for the summer months",
+                  "stock": 10,
+                  "size": [
+                    "S",
+                    "M",
+                    "L",
+                    "XL",
+                    "XXL"
+                  ],
+                  "colors": [
+                    "White",
+                    "Blue",
+                    "Black",
+                    "Red",
+                    "Green"
+                  ],
+                  "display_thumbnail": "https://example.com/images/ws01-red.jpg",
+                  "price": 3999,
+                  "currency": "USD",
+                  "pictures": [
+                    "https://example.com/images/ws01-red-front.jpg",
+                    "https://example.com/images/ws01-red-back.jpg"
+                  ]
+                },
+                {
+                  "id": "WC02",
+                  "name": "Women's T-Shirt",
+                  "description": "Comfortable T-Shirt for women.",
+                  "stock": 5,
+                  "size": [
+                    "S",
+                    "M",
+                    "L",
+                    "XL",
+                    "XXL"
+                  ],
+                  "colors": [
+                    "White",
+                    "Blue",
+                    "Light Blue",
+                    "Black",
+                    "Red",
+                    "Green"
+                  ],
+                  "display_thumbnail": "https://example.com/images/ws02-blue.jpg",
+                  "price": 4499,
+                  "currency": "USD",
+                  "pictures": [
+                    "https://example.com/images/ws02-blue-front.jpg",
+                    "https://example.com/images/ws02-blue-back.jpg"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "category_name": "Electronics",
+          "sub_categories": [
+            {
+              "sub_categories_name": "Smartphone",
+              "products": [
+                {
+                  "id": "MP01",
+                  "name": "Samsung Galaxy S21",
+                  "description": "A high-end smartphone with top-of-the-line features.",
+                  "stock": 50,
+                  "colors": [
+                    "White",
+                    "Blue",
+                    "Black",
+                    "Phantom Gray"
+                  ],
+                  "display_thumbnail": "https://example.com/images/ms01-black.jpg",
+                  "price": 4999,
+                  "currency": "USD",
+                  "weight": 169,
+                  "dimensions": {
+                    "length": 151.7,
+                    "width": 71.2,
+                    "height": 7.9
+                  },
+                  "pictures": [
+                    "https://example.com/images/ms01-black-front.jpg",
+                    "https://example.com/images/ms01-black-back.jpg"
+                  ]
+                },
+                {
+                  "id": "MP02",
+                  "name": "Apple iPhone 13",
+                  "description": "The latest iPhone with a new A15 chip, improved cameras, and longer battery life.",
+                  "stock": 500,
+                  "colors": [
+                    "White",
+                    "Black"
+                  ],
+                  "display_thumbnail": "https://example.com/images/ms01-black.jpg",
+                  "price": 9999,
+                  "currency": "USD",
+                  "weight": 179,
+                  "dimensions": {
+                    "length": 151.7,
+                    "width": 71.2,
+                    "height": 7.9
+                  },
+                  "pictures": [
+                    "https://example.com/images/ms01-black-front.jpg",
+                    "https://example.com/images/ms01-black-back.jpg"
+                  ]
+                }
+              ]
+            },
+            {
+              "sub_categories_name": "Laptop",
+              "products": [
+                {
+                  "id": "L01",
+                  "name": "Apple MacBook Pro",
+                  "description": "13 inch Retina Display Laptop, Apple M1 Chip with 8-Core CPU and 8-Core GPU, 8 GB RAM, 256 GB SSD.",
+                  "stock": 50,
+                  "colors": [
+                    "White",
+                    "Phantom Gray"
+                  ],
+                  "display_thumbnail": "https://example.com/images/ms01-black.jpg",
+                  "price": 14999,
+                  "currency": "USD",
+                  "pictures": [
+                    "https://example.com/images/ms01-black-front.jpg",
+                    "https://example.com/images/ms01-black-back.jpg"
+                  ]
+                },
+                {
+                  "id": "L02",
+                  "name": "HP Pavilion x360",
+                  "description": "14 inch Full HD Touchscreen Laptop, Intel Core i5-1135G7, 8 GB DDR4 RAM, 256 GB SSD.",
+                  "stock": 50,
+                  "colors": [
+                    "White",
+                    "Black"
+                  ],
+                  "display_thumbnail": "https://example.com/images/ms01-black.jpg",
+                  "price": 9999,
+                  "currency": "USD",
+                  "pictures": [
+                    "https://example.com/images/ms01-black-front.jpg",
+                    "https://example.com/images/ms01-black-back.jpg"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
