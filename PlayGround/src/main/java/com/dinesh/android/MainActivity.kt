@@ -11,8 +11,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.dinesh.android.testing.v1.Constants
-import com.dinesh.android.testing.v1.resetPreferences
+import com.dinesh.basic.app.Constants
 
 class MainActivity: ComponentActivity() {
     private val TAG = "log_" + MainActivity::class.java.name.split(MainActivity::class.java.name.split(".").toTypedArray()[2] + ".").toTypedArray()[1]
@@ -33,12 +32,12 @@ class MainActivity: ComponentActivity() {
 //
 //        Log.i(TAG, "onCreate: user --> $user")
 
-        Constants.TOKEN = "your_token..."
+        Constants.TOKEN = "your_token"
         val token = Constants.TOKEN
-        Log.i(TAG, "onCreate: token1 --> $token")
+        Log.i(TAG, "onCreate: token3 --> $token")
 
 //        resetPreferences()
-        Log.e(TAG, "onCreate: token2 --> ${Constants.TOKEN}")
+        Log.e(TAG, "onCreate: token4 --> ${Constants.TOKEN}")
 
 
 
