@@ -1,19 +1,22 @@
 package com.dinesh.basic.app
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.content.SharedPreferences
-import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import com.dinesh.basic.MyApp
+import dagger.Module
+import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
+import dagger.hilt.components.SingletonComponent
+import javax.inject.Inject
+import javax.inject.Singleton
 import kotlin.properties.ReadWriteProperty
 import kotlin.reflect.KProperty
 
 private val TAG = "log_" + SharedPreferenceDelegate::class.java.name.split(SharedPreferenceDelegate::class.java.name.split(".").toTypedArray()[2] + ".").toTypedArray()[1]
 
 /**
- * # Destructuring Declaration
+ * # SharedPreferenceDelegate
  *
  *  *Don't*
  *
@@ -33,135 +36,71 @@ private val TAG = "log_" + SharedPreferenceDelegate::class.java.name.split(Share
  *
  *  *Do*
  *
+ *     @Inject lateinit var constants: Constants
+ *
  *         //  Save the data using shared preferences
- *         var theme: String by sharedPreferences("Theme")
- *         theme = "Theme.Material3.Dark"
+ *         constants.TOKEN = "your_token"
  *
  *         //  Get the data using shared preferences
- *         Log.i(TAG, "onCreate: $theme")
+ *         Log.e(TAG, "onCreate: token --> ${constants.TOKEN}")
+ *
+ *         //  Erase the shared preferences data
+ *         constants.resetPreferences()
  *
  */
-//
-//@SuppressLint("StaticFieldLeak")
-//object Constants {
-//
-//    lateinit var context: Context
-//        private set
-//    fun init(context: Context) {
-//        this.context = context
-//    }
-//
-//    var TOKEN: String? by SharedPreferenceDelegate("TOKEN", "")
-//    var ID: Int? by SharedPreferenceDelegate("ID", 0)
-//    var USER_NAME: String? by SharedPreferenceDelegate("USER", "")
-//    var USER_EMAIL: String? by SharedPreferenceDelegate("USER_EMAIL", "")
-//    var USER_IS_ACTIVE: Boolean by SharedPreferenceDelegate("USER_IS_ACTIVE", false)
-//}
-//
-//class SharedPreferenceDelegate<T>(private val key: String, private val defaultValue: T) : ReadWriteProperty<Any?, T> {
-//
-////    private val sharedPreferences: SharedPreferences? = MyApp.context?.getSharedPreferences("MySharedPreferences_${MyApp.context?.packageName}", AppCompatActivity.MODE_PRIVATE)
-//    private val sharedPreferences: SharedPreferences? = MyApp.context?.getSharedPreferences("MySharedPreferences_${MyApp.context?.packageName}", AppCompatActivity.MODE_PRIVATE)
-//
-//    override fun getValue(thisRef: Any?, property: KProperty<*>): T {
-//        if (sharedPreferences != null) {
-//            @Suppress("UNCHECKED_CAST")
-//            return when (defaultValue) {
-//                is Boolean -> sharedPreferences.getBoolean(key, defaultValue as Boolean) as T
-//                is Float -> sharedPreferences.getFloat(key, defaultValue as Float) as T
-//                is Int -> sharedPreferences.getInt(key, defaultValue as Int) as T
-//                is Long -> sharedPreferences.getLong(key, defaultValue as Long) as T
-//                is String -> sharedPreferences.getString(key, defaultValue as String) as T
-//                else -> throw IllegalArgumentException("This type cannot be accessed by sharedPreferences")
-//            }
-//        } else {
-//            throw Exception("sharedPreferences instance is null")
-//        }
-//    }
-//
-//    override fun setValue(thisRef: Any?, property: KProperty<*>, value: T) {
-//        if (sharedPreferences != null) {
-//            with(sharedPreferences.edit()) {
-//                when (value) {
-//                    is Boolean -> putBoolean(key, value)
-//                    is Float -> putFloat(key, value)
-//                    is Int -> putInt(key, value)
-//                    is Long -> putLong(key, value)
-//                    is String -> putString(key, value)
-//                    else -> throw IllegalArgumentException("This type cannot be saved into SharedPreferences")
-//                }
-//                apply()
-//            }
-//        } else {
-//            throw Exception("sharedPreferences instance is null")
-//        }
-//    }
-//}
-//
-//fun Context.resetPreferences() {
-//    val sharedPreferences: SharedPreferences = getSharedPreferences("MySharedPreferences_${packageName}", AppCompatActivity.MODE_PRIVATE)
-//    sharedPreferences.edit().clear().apply()
-//}
-//
 
-
-
-object Constants {
-    private var sharedPreferences: SharedPreferences? = null
-    fun init(sharedPreferences: SharedPreferences) {
-        this.sharedPreferences = sharedPreferences
-    }
+@Singleton
+class Constants @Inject constructor(private val sharedPreferences: SharedPreferences) {
 
     var TOKEN: String? by SharedPreferenceDelegate(sharedPreferences, "TOKEN", "")
     var ID: Int? by SharedPreferenceDelegate(sharedPreferences, "ID", 0)
     var user: String? by SharedPreferenceDelegate(sharedPreferences, "USER", "")
     var USER_EMAIL: String? by SharedPreferenceDelegate(sharedPreferences, "USER_EMAIL", "")
     var USER_IS_ACTIVE: Boolean by SharedPreferenceDelegate(sharedPreferences, "USER_IS_ACTIVE", false)
+
+    fun resetPreferences() {
+        sharedPreferences.edit().clear().apply()
+    }
 }
 
-class SharedPreferenceDelegate<T>(private val sharedPreferences: SharedPreferences?, private val key: String, private val defaultValue: T) : ReadWriteProperty<Any?, T> {
+class SharedPreferenceDelegate<T>(private val sharedPreferences: SharedPreferences, private val key: String, private val defaultValue: T) : ReadWriteProperty<Any?, T> {
 
     override fun getValue(thisRef: Any?, property: KProperty<*>): T {
-        if (sharedPreferences != null) {
-            @Suppress("UNCHECKED_CAST")
-            return when (defaultValue) {
-                is Boolean -> sharedPreferences.getBoolean(key, defaultValue as Boolean) as T
-                is Float -> sharedPreferences.getFloat(key, defaultValue as Float) as T
-                is Int -> sharedPreferences.getInt(key, defaultValue as Int) as T
-                is Long -> sharedPreferences.getLong(key, defaultValue as Long) as T
-                is String -> sharedPreferences.getString(key, defaultValue as String) as T
-                else -> throw IllegalArgumentException("This type cannot be accessed by sharedPreferences")
-            }
-        } else {
-//            throw Exception("sharedPreferences instance is null")
-            return "" as T
+        @Suppress("UNCHECKED_CAST")
+        return when (defaultValue) {
+            is Boolean -> sharedPreferences.getBoolean(key, defaultValue as Boolean) as T
+            is Float -> sharedPreferences.getFloat(key, defaultValue as Float) as T
+            is Int -> sharedPreferences.getInt(key, defaultValue as Int) as T
+            is Long -> sharedPreferences.getLong(key, defaultValue as Long) as T
+            is String -> sharedPreferences.getString(key, defaultValue as String) as T
+            else -> throw IllegalArgumentException("This type cannot be accessed by sharedPreferences")
         }
     }
 
     override fun setValue(thisRef: Any?, property: KProperty<*>, value: T) {
-        if (sharedPreferences != null) {
-            with(sharedPreferences.edit()) {
-                when (value) {
-                    is Boolean -> putBoolean(key, value)
-                    is Float -> putFloat(key, value)
-                    is Int -> putInt(key, value)
-                    is Long -> putLong(key, value)
-                    is String -> putString(key, value)
-                    else -> throw IllegalArgumentException("This type cannot be saved into SharedPreferences")
-                }
-                apply()
+        with(sharedPreferences.edit()) {
+            when (value) {
+                is Boolean -> putBoolean(key, value)
+                is Float -> putFloat(key, value)
+                is Int -> putInt(key, value)
+                is Long -> putLong(key, value)
+                is String -> putString(key, value)
+                else -> throw IllegalArgumentException("This type cannot be saved into SharedPreferences")
             }
-        } else {
-//            throw Exception("sharedPreferences instance is null")
+            apply()
         }
     }
 }
 
-fun Context.resetPreferences() {
-    val sharedPreferences: SharedPreferences = getSharedPreferences("MySharedPreferences_${packageName}", AppCompatActivity.MODE_PRIVATE)
-    sharedPreferences.edit().clear().apply()
+@Module
+@InstallIn(SingletonComponent::class)
+object SharedPreferencesModule {
+    @Provides
+    @Singleton
+    fun provideSharedPreferences(@ApplicationContext context: Context): SharedPreferences {
+        return context.getSharedPreferences("MySharedPreferences_${context.packageName}", AppCompatActivity.MODE_PRIVATE)
+    }
 }
-
 
 
 

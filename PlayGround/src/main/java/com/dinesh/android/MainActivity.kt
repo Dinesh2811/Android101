@@ -12,9 +12,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.dinesh.basic.app.Constants
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class MainActivity: ComponentActivity() {
     private val TAG = "log_" + MainActivity::class.java.name.split(MainActivity::class.java.name.split(".").toTypedArray()[2] + ".").toTypedArray()[1]
+
+    @Inject lateinit var constants: Constants
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,17 +32,12 @@ class MainActivity: ComponentActivity() {
             }
         }
 
-//        var user by sharedPreferences(PreferenceKey.User, "")
-////        user = "user_35"
-//
-//        Log.i(TAG, "onCreate: user --> $user")
-
-        Constants.TOKEN = "your_token"
-        val token = Constants.TOKEN
+        constants.TOKEN = "your_token"
+        val token = constants.TOKEN
         Log.i(TAG, "onCreate: token3 --> $token")
 
-//        resetPreferences()
-        Log.e(TAG, "onCreate: token4 --> ${Constants.TOKEN}")
+        constants.resetPreferences()
+        Log.e(TAG, "onCreate: token4 --> ${constants.TOKEN}")
 
 
 
