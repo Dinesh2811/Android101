@@ -16,7 +16,7 @@ plugins {
 val compileSdk by extra(34)     //  rootProject.extra["compileSdk"] as Int
 val targetSdk by extra(34)     //  rootProject.extra["targetSdk"] as Int
 val jvmToolchain by extra(17)     //  rootProject.extra["jvmToolchain"] as Int
-val kotlinCompilerExtensionVersion by extra("1.5.8")    //  rootProject.extra["kotlinCompilerExtensionVersion"] as String
+val kotlinCompilerExtensionVersion by extra("1.5.9")    //  rootProject.extra["kotlinCompilerExtensionVersion"] as String
 
 val isReleaseMinifyEnabled by extra(true)     //  rootProject.extra["isReleaseMinifyEnabled"] as Boolean
 val isReleaseShrinkResources by extra(true)     //  rootProject.extra["isReleaseShrinkResources"] as Boolean
