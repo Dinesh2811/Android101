@@ -19,8 +19,6 @@ import javax.inject.Inject
 class MainActivity: ComponentActivity() {
     private val TAG = "log_" + MainActivity::class.java.name.split(MainActivity::class.java.name.split(".").toTypedArray()[2] + ".").toTypedArray()[1]
 
-    @Inject lateinit var constants: Constants
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -31,15 +29,6 @@ class MainActivity: ComponentActivity() {
                 }
             }
         }
-
-        constants.TOKEN = "your_token"
-        val token = constants.TOKEN
-        Log.i(TAG, "onCreate: token3 --> $token")
-
-        constants.resetPreferences()
-        Log.e(TAG, "onCreate: token4 --> ${constants.TOKEN}")
-
-
 
 //        startActivity(Intent(this, Main::class.java))
 
