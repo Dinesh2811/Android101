@@ -4,7 +4,6 @@ import java.text.SimpleDateFormat
 import java.util.Locale
 
 object DateFormat {
-
     private fun formatDateAsDateMonthYear(date: String = "02-28-2024"): String {
         return try {
             val inputFormat = SimpleDateFormat("MM-dd-yyyy", Locale.US)

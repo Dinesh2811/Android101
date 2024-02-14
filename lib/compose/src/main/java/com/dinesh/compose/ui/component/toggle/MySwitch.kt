@@ -1,4 +1,4 @@
-package com.dinesh.android.testing.toggle.v0
+package com.dinesh.compose.ui.component.toggle
 
 import androidx.compose.ui.*
 import androidx.compose.runtime.*
@@ -41,7 +41,7 @@ import androidx.compose.ui.semantics.semantics
 import kotlinx.coroutines.*
 import androidx.navigation.compose.*
 import androidx.navigation.*
-import com.dinesh.android.R
+import com.dinesh.xml.R
 
 
 /**
@@ -64,28 +64,9 @@ fun MySwitchPreview() {
         MySimpleSwitchWithColor()
         MySimpleSwitchWithIcon()
         MySimpleSwitchWithText(checked = switchCheckedState, onCheckedChange = { switchCheckedState = it })
-
-
-        Column(modifier = Modifier.fillMaxSize(),
-            horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center) {
-            MyCustomSwitch1()
-        }
-
-
-        Column(modifier = Modifier.fillMaxSize(),
-            horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center) {
-            MyCustomSwitch2()
-        }
-
-
-        Column(modifier = Modifier.fillMaxSize(),
-            horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center) {
-            MyCustomSwitch3()
-        }
-
-//        MyCustomSwitch1()
-//        MyCustomSwitch2()
-//        MyCustomSwitch3()
+        MyCustomSwitch1()
+        MyCustomSwitch2()
+        MyCustomSwitch3()
     }
 
 }
@@ -262,9 +243,9 @@ fun MyCustomSwitch1(
         }
     }
 
-    Spacer(modifier = Modifier.height(height = 16.dp))
+    Spacer(modifier = Modifier.height(height = 28.dp))
 
-    Text(text = if (switchOn) "ON" else "OFF")
+//    Text(text = if (switchOn) "ON" else "OFF")
 }
 
 @Composable
@@ -333,9 +314,9 @@ fun MyCustomSwitch2(
         )
     }
 
-    Spacer(modifier = Modifier.height(18.dp))
+    Spacer(modifier = Modifier.height(height = 28.dp))
 
-    Text(text = if (switchON.value) "ON" else "OFF")
+//    Text(text = if (switchON.value) "ON" else "OFF")
 }
 
 
@@ -396,7 +377,7 @@ fun MyCustomSwitch3(
 
     }
 
-    Spacer(modifier = Modifier.height(18.dp))
+    Spacer(modifier = Modifier.height(height = 28.dp))
 
-    Text(text = if (switchON.value) "ON" else "OFF")
+//    Text(text = if (switchON.value) "ON" else "OFF")
 }
