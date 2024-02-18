@@ -1,15 +1,18 @@
-package com.dinesh.android.testing.basic
+package com.dinesh.android.rv.kotlin.view_binding
 
+import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.dinesh.android.R
 import com.dinesh.android.databinding.RvBasicListBinding
-import com.google.android.material.checkbox.MaterialCheckBox
+
 
 class RvAdapter(): RecyclerView.Adapter<RvAdapter.MyViewHolder>() {
     private var rvModelList: List<RvModel> = emptyList()
@@ -55,3 +58,4 @@ class RvAdapter(): RecyclerView.Adapter<RvAdapter.MyViewHolder>() {
         return rvModelList.size
     }
 }
+
