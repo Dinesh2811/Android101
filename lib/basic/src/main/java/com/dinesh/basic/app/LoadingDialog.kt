@@ -18,6 +18,12 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+/**
+ * # Usage
+ *
+ *     @Inject lateinit var loadingDialog: LoadingDialog
+ *         loadingDialog.startLoadingDialog()
+ */
 
 @ActivityScoped
 class LoadingDialog @Inject constructor(@ActivityContext private val context: Context) {

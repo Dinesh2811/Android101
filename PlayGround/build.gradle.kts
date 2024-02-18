@@ -133,6 +133,8 @@ dependencies {
     implementation(project(mapOf("path" to ":lib:xml")))
     implementation(project(mapOf("path" to ":lib:theme")))
 
+    implementation("com.googlecode.libphonenumber:libphonenumber:8.2.0")
+
     implementation(libs.bundles.android)
     implementation(libs.bundles.compose)
     implementation(platform(libs.androidx.compose.bom))
