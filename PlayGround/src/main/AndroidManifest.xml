@@ -26,7 +26,7 @@
 
         <activity android:name=".Main"
                   android:theme="@style/Theme.SharedTheme"/>
-        <activity android:name=".testing.stripe.v0.Main"/>
+        <activity android:name=".testing.basic.RvMain"/>
 
     </application>
 
