@@ -9,9 +9,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.dinesh.android.R
 
-class RvMain : AppCompatActivity() {
-    private val TAG = "log_" + RvMain::class.java.name.split(RvMain::class.java.name.split(".").toTypedArray()[2] + ".").toTypedArray()[1]
+private val TAG = "log_" + RvMain::class.java.name.split(RvMain::class.java.name.split(".").toTypedArray()[2] + ".").toTypedArray()[1]
 
+class RvMain : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
     private var rvModelList = ArrayList<RvModel>()
     private lateinit var rvAdapter: RvAdapter
@@ -30,9 +30,8 @@ class RvMain : AppCompatActivity() {
     }
 
     private fun addDataToList() {
-        //Sample Model Data
         for (i in 0..50) {
-            rvModelList.add(RvModel("User " + (i + 1), R.drawable.ic_launcher_foreground, false, false))
+            rvModelList.add(RvModel(name = "User " + (i + 1)))
         }
     }
 

@@ -11,21 +11,11 @@ import com.dinesh.android.R
 import com.dinesh.android.databinding.RvBasicListBinding
 import com.google.android.material.checkbox.MaterialCheckBox
 
-class RvAdapter(): RecyclerView.Adapter<RvAdapter.MyViewHolder>() {
-    private var rvModelList: List<RvModel> = emptyList()
-    private var onItemClick: ((View?, Int) -> Unit)? = null
-
-    constructor(rvModelList: List<RvModel>, onItemClick: (View?, Int) -> Unit) : this() {
-        this.rvModelList = rvModelList
-        this.onItemClick = onItemClick
-    }
+class RvAdapter(val rvModelList: List<RvModel>, val onItemClick: (View?, Int) -> Unit): RecyclerView.Adapter<RvAdapter.MyViewHolder>() {
 
     inner class MyViewHolder(val binding: RvBasicListBinding): RecyclerView.ViewHolder(binding.root) {
         init {
-            itemView.setOnClickListener { onItemClick?.invoke(it, bindingAdapterPosition) }
-            binding.checkbox.setOnCheckedChangeListener { _, isChecked ->
-                rvModelList[bindingAdapterPosition].isChecked = isChecked
-            }
+            itemView.setOnClickListener { onItemClick(it, position) }
         }
     }
 
@@ -39,15 +29,6 @@ class RvAdapter(): RecyclerView.Adapter<RvAdapter.MyViewHolder>() {
             ivProfilePic.setImageResource(rvModelList[position].profilePic)
             tvName.text = rvModelList[position].name
             tvPosition.text = position.toString()
-
-            Glide.with(holder.itemView.context)
-                .load("https://loremflickr.com/20$position/20$position/dog")
-                .placeholder(rvModelList[position].profilePic)
-                .error(R.drawable.ic_launcher_background)
-                .circleCrop()
-                .into(ivProfilePic)
-
-            checkbox.isChecked = rvModelList[position].isChecked
         }
     }
 
