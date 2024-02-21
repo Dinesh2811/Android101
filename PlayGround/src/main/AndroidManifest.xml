@@ -27,6 +27,7 @@
         <activity android:name=".Main"
                   android:theme="@style/Theme.SharedTheme"/>
         <activity android:name=".testing.basic.RvMain"/>
+        <activity android:name=".testing.v0.RvMain"/>
 
     </application>
 

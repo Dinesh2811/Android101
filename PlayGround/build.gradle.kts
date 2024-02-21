@@ -133,7 +133,10 @@ dependencies {
     implementation(project(mapOf("path" to ":lib:xml")))
     implementation(project(mapOf("path" to ":lib:theme")))
 
-    implementation("com.googlecode.libphonenumber:libphonenumber:8.2.0")
+    implementation("com.googlecode.libphonenumber:libphonenumber:8.13.30")
+
+    implementation("androidx.paging:paging-runtime:3.2.1")
+    implementation("androidx.paging:paging-compose:3.3.0-alpha03")
 
     implementation(libs.bundles.android)
     implementation(libs.bundles.compose)

@@ -26,7 +26,8 @@ class MainActivity: AppCompatActivity() {
 //        }
 
 //        startActivity(Intent(this, com.dinesh.android.Main::class.java))
-        startActivity(Intent(this, com.dinesh.android.testing.basic.RvMain::class.java))
+//        startActivity(Intent(this, com.dinesh.android.testing.basic.RvMain::class.java))
+//        startActivity(Intent(this, com.dinesh.android.testing.v0.RvMain::class.java))
 
     }
 }

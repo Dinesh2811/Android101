@@ -11,7 +11,7 @@ constraintlayout = "2.1.4"
 material = "1.11.0"
 
 material3 = "1.2.0"
-kotlinx-coroutines = "1.7.3"
+kotlinx-coroutines = "1.8.0"
 
 compose-bom = "2024.02.00"
 #compose = "1.6.1"

@@ -20,19 +20,15 @@ class RvAdapter(val rvModelList: List<RvModel>, val onItemClick: (View?, Int) ->
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        val binding = RvBasicListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return MyViewHolder(binding)
+        return MyViewHolder(RvBasicListBinding.inflate(LayoutInflater.from(parent.context), parent, false))
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.binding.apply {
-            ivProfilePic.setImageResource(rvModelList[position].profilePic)
             tvName.text = rvModelList[position].name
             tvPosition.text = position.toString()
         }
     }
 
-    override fun getItemCount(): Int {
-        return rvModelList.size
-    }
+    override fun getItemCount(): Int = rvModelList.size
 }
