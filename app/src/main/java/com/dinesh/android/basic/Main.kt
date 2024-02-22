@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.dinesh.android.basic.util.AccountType
 import com.dinesh.basic.formatting.CurrencyInputWatcher
 import com.dinesh.basic.formatting.currencyFormat
-import com.dinesh.basic.formatting.getNumericValue
+import com.dinesh.basic.formatting.getNumericCurrencyValue
 import com.dinesh.basic.view.DatePickerHelper.showDatePicker
 import com.dinesh.xml.databinding.BasicMainBinding
 import java.math.BigDecimal
@@ -31,7 +31,7 @@ class Main: AppCompatActivity() {
 
     private fun currencyFormatInputEditText() {
         binding.currencyFormatInputEditText.setText("$${currencyFormat("20123.56")}")
-        val currencyFormatInputEditTextValue: BigDecimal = binding.currencyFormatInputEditText.getNumericValue()
+        val currencyFormatInputEditTextValue: BigDecimal = binding.currencyFormatInputEditText.getNumericCurrencyValue()
         Log.i(TAG, "currencyFormatInputEditText: currencyFormatInputEditTextValue --> $currencyFormatInputEditTextValue")
         binding.currencyFormatInputEditText.addTextChangedListener(CurrencyInputWatcher(binding.currencyFormatInputEditText) { text, value ->
             Log.i(TAG, "currencyFormatInputEditText: text --> $text value --> $value")

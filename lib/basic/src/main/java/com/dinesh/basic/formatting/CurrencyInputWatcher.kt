@@ -42,7 +42,7 @@ class CurrencyInputWatcher(private val editText: EditText, private val afterText
         editText.setText(formattedValue)
         editText.setSelection(formattedValue.length)
         editText.addTextChangedListener(this)
-        afterTextChangedAction(formattedValue, editText.getNumericValue())
+        afterTextChangedAction(formattedValue, editText.getNumericCurrencyValue())
     }
 
     override fun beforeTextChanged(charSequence: CharSequence, start: Int, count: Int, after: Int) {}
@@ -51,7 +51,7 @@ class CurrencyInputWatcher(private val editText: EditText, private val afterText
 }
 
 
-fun TextView.getNumericValue(setScale: Int = 2): BigDecimal {
+fun TextView.getNumericCurrencyValue(setScale: Int = 2): BigDecimal {
     val amountWithPrefix = text.toString()
     val cleanedAmount = amountWithPrefix.replace(Regex("[^0-9]"), "")
     val doubleValue = cleanedAmount.toDoubleOrNull() ?: 0.0
