@@ -23,6 +23,10 @@
           <accountId value="VXNlcjoyODQwMzQ=" />
           <internalId value="60ff3175-4ae6-467a-8138-b3ff049c8636" />
         </chat>
+        <chat>
+          <accountId value="VXNlcjoyODQwMzQ=" />
+          <internalId value="b071c32a-2553-4b75-af9c-a205e1ad7669" />
+        </chat>
       </list>
     </chats>
   </component>
