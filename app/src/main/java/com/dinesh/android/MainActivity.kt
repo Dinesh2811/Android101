@@ -1,5 +1,6 @@
 package com.dinesh.android
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -25,7 +26,7 @@ class MainActivity: ComponentActivity() {
             }
         }
 
-        Main().testing()
+        startActivity(Intent(this, com.dinesh.android.basic.fragment.MainActivity::class.java))
 
     }
 }
