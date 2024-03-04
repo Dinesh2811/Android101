@@ -67,6 +67,8 @@ fun MySwitchPreview() {
         MyCustomSwitch1()
         MyCustomSwitch2()
         MyCustomSwitch3()
+
+        MyCustomSwitchPreview()
     }
 
 }
@@ -253,10 +255,8 @@ private fun animateAlignmentAsState(
     targetBiasValue: Float
 ): State<BiasAlignment> {
     val bias by animateFloatAsState(targetBiasValue, label = "")
-    return derivedStateOf { BiasAlignment(horizontalBias = bias, verticalBias = 0f) }
+    return remember { derivedStateOf { BiasAlignment(horizontalBias = bias, verticalBias = 0f) } }
 }
-
-
 
 
 @Composable
@@ -380,4 +380,110 @@ fun MyCustomSwitch3(
     Spacer(modifier = Modifier.height(height = 28.dp))
 
 //    Text(text = if (switchON.value) "ON" else "OFF")
+}
+
+
+
+@Preview(showBackground = true)
+@Composable
+fun MyCustomSwitchPreview() {
+    var isSwitchOn by remember { mutableStateOf(false) }
+
+    Column(
+        modifier = Modifier.fillMaxSize(),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    ) {
+        SwitchWithText(
+            isSwitchOn = isSwitchOn,
+            onSwitchChanged = { newState ->
+                isSwitchOn = newState
+            }
+        )
+    }
+}
+
+@Composable
+fun SwitchWithText(
+    isSwitchOn: Boolean,
+    onSwitchChanged: (Boolean) -> Unit
+) {
+    val contentAlpha by animateFloatAsState(if (isSwitchOn) ContentAlpha.high else ContentAlpha.disabled, label = "")
+
+    Row(
+        modifier = Modifier.fillMaxWidth(),
+        horizontalArrangement = Arrangement.SpaceBetween,
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        androidx.compose.material.Text(
+            text = if (isSwitchOn) "ON" else "OFF",
+            style = MaterialTheme.typography.bodyLarge,
+            maxLines = 1,
+            modifier = Modifier
+                .weight(1f)
+                .alpha(contentAlpha)
+        )
+        MyCustomSwitch(
+            isSwitchOn = isSwitchOn,
+            onSwitchChanged = onSwitchChanged
+        )
+    }
+}
+
+@Composable
+fun MyCustomSwitch(
+    isSwitchOn: Boolean,
+    onSwitchChanged: (Boolean) -> Unit,
+    width: Dp = 72.dp,
+    height: Dp = 40.dp,
+    checkedTrackColor: Color = Color(0xFF35898F),
+    uncheckedTrackColor: Color = Color(0xFFe0e0e0),
+    gapBetweenThumbAndTrackEdge: Dp = 8.dp,
+    borderWidth: Dp = 4.dp,
+    cornerSize: Int = 50,
+    iconInnerPadding: Dp = 4.dp,
+    thumbSize: Dp = 24.dp
+) {
+    val interactionSource = remember { MutableInteractionSource() }
+    val alignment by animateAlignmentAsState(if (isSwitchOn) 1f else -1f)
+
+    Box(
+        modifier = Modifier
+            .size(width = width, height = height)
+            .border(
+                width = borderWidth,
+                color = if (isSwitchOn) checkedTrackColor else uncheckedTrackColor,
+                shape = RoundedCornerShape(percent = cornerSize)
+            )
+            .clickable(
+                indication = null,
+                interactionSource = interactionSource
+            ) {
+                onSwitchChanged(!isSwitchOn)
+            },
+        contentAlignment = Alignment.Center
+    ) {
+        Box(
+            modifier = Modifier
+                .padding(
+                    start = gapBetweenThumbAndTrackEdge,
+                    end = gapBetweenThumbAndTrackEdge
+                )
+                .fillMaxSize(),
+            contentAlignment = alignment
+        ) {
+            androidx.compose.material.Icon(
+                imageVector = if (isSwitchOn) Icons.Filled.Done else Icons.Filled.Close,
+                contentDescription = if (isSwitchOn) "Enabled" else "Disabled",
+                modifier = Modifier
+                    .size(size = thumbSize)
+                    .background(
+                        color = if (isSwitchOn) checkedTrackColor else uncheckedTrackColor,
+                        shape = CircleShape
+                    )
+                    .padding(all = iconInnerPadding),
+                tint = Color.White
+            )
+        }
+    }
 }

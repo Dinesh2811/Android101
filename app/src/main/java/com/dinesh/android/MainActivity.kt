@@ -26,7 +26,8 @@ class MainActivity: ComponentActivity() {
             }
         }
 
-        startActivity(Intent(this, com.dinesh.android.basic.fragment.MainActivity::class.java))
+        startActivity(Intent(this, com.dinesh.android.basic.Main::class.java))
+//        startActivity(Intent(this, com.dinesh.android.basic.fragment.MainActivity::class.java))
 
     }
 }

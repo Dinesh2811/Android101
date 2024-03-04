@@ -88,6 +88,7 @@ class Main: AppCompatActivity() {
             showDatePicker(this, apiDateFormat = { apiDateFormat ->
                 Log.d(TAG, "selectDate: apiDateFormat --> ${apiDateFormat}")
             }) { calendar, formattedDate ->
+                binding.selectDate.text = formattedDate
                 Log.i(TAG, "selectDate: formattedDate --> ${formattedDate}")
             }
         }

@@ -24,6 +24,7 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".basic.Main"/>
         <activity android:name=".basic.fragment.MainActivity"/>
 
     </application>

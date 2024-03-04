@@ -2,6 +2,12 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <value>
+      <entry key="CustomRadioButtonIndicator_WithIconToggleButton">
+        <State />
+      </entry>
+      <entry key="MySelectThemeLayout">
+        <State />
+      </entry>
       <entry key="MySwitchPreview">
         <State>
           <targetSelectedWithDropDown>
@@ -17,6 +23,9 @@
           </targetSelectedWithDropDown>
           <timeTargetWasSelectedWithDropDown value="2024-02-14T04:11:01.362021300Z" />
         </State>
+      </entry>
+      <entry key="MySwitchPreview (1)">
+        <State />
       </entry>
       <entry key="PlayGround">
         <State />

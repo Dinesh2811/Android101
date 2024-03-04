@@ -29,6 +29,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.dinesh.android.R
@@ -84,58 +85,27 @@ fun CustomRadioButtonIndicator_WithIconToggleButton() {
 @Composable
 fun MySelectThemeLayout() {
     var themeTypeValue by remember { mutableStateOf("Default") }
-    var selectedValue by remember { mutableIntStateOf(R.style.Theme_Material3) }
+    var selectedValue by remember { mutableStateOf(R.style.Theme_Material3) }
+
+    val themeMap = mapOf(
+        "Light" to getLightThemePairs(),
+        "Dark" to getDarkThemePairs(),
+        "Default" to getDefaultThemePairs()
+    )
 
     MySelectThemePreview(
         themeTypeValue = themeTypeValue,
         selectedValue = selectedValue,
         onThemeTypeChange = { newThemeType ->
             themeTypeValue = newThemeType
-
-
-            if (Build.VERSION.SDK_INT > Build.VERSION_CODES.R) {
-                when (newThemeType) {
-                    "Light" -> themePair = listOf(
-                        Pair(R.style.Theme_Dynamic_Light, "Light")
-                    )
-
-                    "Dark" -> themePair = listOf(
-                        Pair(R.style.Theme_Dynamic_Dark, "Dark"),
-                        Pair(R.style.Theme_Dynamic_PureBlack, "PureBlack"),
-                        Pair(R.style.Theme_Dynamic_PureBlack_V2, "PureBlack v2"),
-                    )
-
-                    "Default" -> themePair = listOf(
-                        Pair(R.style.Theme_Material3, "Default")
-                    )
-                }
-            } else {
-                when (newThemeType) {
-                    "Light" -> themePair = listOf(
-                        Pair(R.style.Theme_Light, "Light"),
-                    )
-
-                    "Dark" -> themePair = listOf(
-                        Pair(R.style.Theme_Dark, "Dark"),
-                        Pair(R.style.Theme_PureBlack, "PureBlack"),
-                        Pair(R.style.Theme_PureBlack_V2, "PureBlack v2"),
-                    )
-
-                    "Default" -> themePair = listOf(
-                        Pair(R.style.Theme_Material3, "Default"),
-                    )
-                }
-            }
-
+            selectedValue = themeMap[newThemeType]?.firstOrNull()?.first ?: selectedValue
         },
         onSelectedValueChange = { newSelectedValue ->
             selectedValue = newSelectedValue
+            themeTypeValue = themeMap.entries.firstOrNull { it.value.any { pair -> pair.first == newSelectedValue } }?.key ?: themeTypeValue
         }
     )
 }
-
-val themeTypes = listOf("Default", "Light", "Dark")
-var themePair: List<Pair<Int, String>> = listOf()
 
 @Composable
 fun MySelectThemePreview(
@@ -145,88 +115,126 @@ fun MySelectThemePreview(
     onSelectedValueChange: (Int) -> Unit
 ) {
     MaterialTheme {
-        val context = LocalContext.current
+        val themeTypes = listOf("Default", "Light", "Dark")
+        val themePairs = getThemePairs(themeTypes)
         Column(Modifier.padding(8.dp)) {
-//            Text(text = "Selected value: ${selectedValue.ifEmpty { R.style.Theme_Material3 }}")
-
-            themeTypes.forEach { themeType ->
-                Row(
-                    verticalAlignment = Alignment.CenterVertically,
-                    modifier = Modifier
-                        .selectable(
-                            selected = (themeTypeValue == themeType),
-                            onClick = { onThemeTypeChange(themeType) },
-                            role = Role.RadioButton
-                        )
-                        .padding(vertical = 8.dp)
-                        .padding(top = 4.dp)
-                ) {
-                    IconToggleButton(
-                        checked = themeTypeValue == themeType,
-                        onCheckedChange = { onThemeTypeChange(themeType) },
-                        modifier = Modifier.size(24.dp)
-                    ) {
-                        Icon(
-                            imageVector = if (themeTypeValue == themeType) {
-                                Icons.Outlined.CheckCircleOutline
-                            } else {
-                                Icons.Outlined.Circle
-                            },
-                            contentDescription = null,
-                            tint = MaterialTheme.colorScheme.primary
-                        )
-                    }
-                    Text(
-                        text = themeType,
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(horizontal = 4.dp),
-                        style = MaterialTheme.typography.titleLarge
-                    )
+            themePairs.forEach { (themeType, pairs) ->
+                ThemeTypeRow(themeType, themeTypeValue, onThemeTypeChange)
+                pairs.forEach { (theme, displayValue) ->
+                    ThemePairRow(theme, displayValue, selectedValue, onSelectedValueChange)
                 }
-
-                themePair.forEach { (theme, displayValue) ->
-                    Row(
-                        verticalAlignment = Alignment.CenterVertically,
-                        modifier = Modifier
-                            .selectable(
-                                selected = (selectedValue == theme),
-                                onClick = { onSelectedValueChange(theme) },
-                                role = Role.RadioButton
-                            )
-                            .padding(8.dp)
-                            .padding(start = 16.dp)
-                    ) {
-                        IconToggleButton(
-                            checked = selectedValue == theme,
-                            onCheckedChange = { onSelectedValueChange(theme) },
-                            modifier = Modifier.size(24.dp)
-                        ) {
-                            Icon(
-                                imageVector = if (selectedValue == theme) {
-                                    Icons.Outlined.CheckCircleOutline
-                                } else {
-                                    Icons.Outlined.Circle
-                                },
-                                contentDescription = null,
-                                tint = MaterialTheme.colorScheme.primary
-                            )
-                        }
-                        Text(
-                            text = displayValue,
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(horizontal = 4.dp),
-                            style = MaterialTheme.typography.titleMedium
-                        )
-                    }
-                }
-
             }
-
         }
     }
 }
+
+@Composable
+fun ThemeTypeRow(themeType: String, themeTypeValue: String, onThemeTypeChange: (String) -> Unit) {
+    SelectableRow(
+        selected = (themeTypeValue == themeType),
+        onClick = { onThemeTypeChange(themeType) },
+        text = themeType,
+        style = MaterialTheme.typography.titleLarge
+    )
+}
+
+@Composable
+fun ThemePairRow(theme: Int, displayValue: String, selectedValue: Int, onSelectedValueChange: (Int) -> Unit) {
+    SelectableRow(
+        selected = (selectedValue == theme),
+        onClick = { onSelectedValueChange(theme) },
+        text = displayValue,
+        style = MaterialTheme.typography.titleMedium,
+        modifier = Modifier.padding(start = 16.dp)
+    )
+}
+
+@Composable
+fun SelectableRow(selected: Boolean, onClick: () -> Unit, text: String, style: TextStyle, modifier: Modifier = Modifier) {
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
+        modifier = modifier
+            .selectable(selected = selected, onClick = onClick, role = Role.RadioButton)
+            .padding(vertical = 8.dp)
+            .padding(top = 4.dp)
+    ) {
+        IconToggleButton(
+            checked = selected,
+            onCheckedChange = { onClick() },
+            modifier = Modifier.size(24.dp)
+        ) {
+            Icon(
+                imageVector = if (selected) {
+                    Icons.Outlined.CheckCircleOutline
+                } else {
+                    Icons.Outlined.Circle
+                },
+                contentDescription = null,
+                tint = MaterialTheme.colorScheme.primary
+            )
+        }
+        Text(
+            text = text,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 4.dp),
+            style = style
+        )
+    }
+}
+
+@Composable
+private fun getThemePairs(themeTypes: List<String>): List<Pair<String, List<Pair<Int, String>>>> {
+    return themeTypes.map { themeType -> themeType to getThemePairsByType(themeType) }
+}
+
+private fun getThemePairsByType(themeType: String): List<Pair<Int, String>> {
+    return when (themeType) {
+        "Light" -> getLightThemePairs()
+        "Dark" -> getDarkThemePairs()
+        else -> getDefaultThemePairs()
+    }
+}
+
+private fun getLightThemePairs(): List<Pair<Int, String>> {
+    return if (Build.VERSION.SDK_INT > Build.VERSION_CODES.R) {
+        listOf(
+            Pair(R.style.Theme_Dynamic_Light, "Light"),
+//            Pair(R.style.Theme_Dynamic_PureWhite, "PureWhite"),
+//            Pair(R.style.Theme_Dynamic_PureWhite_V2, "PureWhite v2"),
+        )
+    } else {
+        listOf(
+            Pair(R.style.Theme_Light, "Light"),
+//            Pair(R.style.Theme_PureWhite, "PureWhite"),
+//            Pair(R.style.Theme_PureWhite_V2, "PureWhite v2"),
+        )
+    }
+}
+
+private fun getDarkThemePairs(): List<Pair<Int, String>> {
+    return if (Build.VERSION.SDK_INT > Build.VERSION_CODES.R) {
+        listOf(
+            Pair(R.style.Theme_Dynamic_Dark, "Dark"),
+            Pair(R.style.Theme_Dynamic_PureBlack, "PureBlack"),
+            Pair(R.style.Theme_Dynamic_PureBlack_V2, "PureBlack v2"),
+        )
+    } else {
+        listOf(
+            Pair(R.style.Theme_Dark, "Dark"),
+            Pair(R.style.Theme_PureBlack, "PureBlack"),
+            Pair(R.style.Theme_PureBlack_V2, "PureBlack v2"),
+        )
+    }
+}
+
+private fun getDefaultThemePairs(): List<Pair<Int, String>> {
+    return listOf(
+        Pair(R.style.Theme_Material3, "Default"),
+//        Pair(R.style.Theme_OldTheme, "Old Theme"),
+    )
+}
+
 
 
 @Preview(showBackground = true)
